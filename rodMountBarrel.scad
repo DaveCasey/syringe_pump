@@ -18,7 +18,7 @@ difference(){
 	cube(size=[mountXSize,baseSizeY,mountZSize - 5.5]);
 
 	//bore hole for threaded rod
-	translate([-floatCorrection,centerY,threadedAxisHeight -5]){
+	translate([-floatCorrection,centerY,threadedAxisHeight - 2]){
 		rotate(a=[0,90,0]){
 			cylinder(h=mountXSize+floatCorrection2, r=smoothRodRadius);
 		}
