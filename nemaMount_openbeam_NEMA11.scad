@@ -8,8 +8,8 @@ wall_thickness = 5;
 motor_width = 28; // NEMA 11
 frame_width = motor_width + (wall_thickness + 1)*2;
 bolt = 4;
-height = 25;
-
+//height = 25;
+height= threadedAxisHeight;
 //	inch = 25.4;
 //	screwPlateSize = 25;	
 //	screwRadius = 3.25;
@@ -157,8 +157,18 @@ nema_17_mount();
                         translate([-frame_width, 0, -frame_width*2])
                             cube(size=[frame_width*4, frame_width*2, frame_width*4]);
 
+        //hole for smooth rod (needs to fit fairly tight)
+                
+        //  #translate([-floatCorrection + mountXSize +floatCorrection2,centerY,smoothAxisHeight + 0.5]){
+            #translate([frame_width/2,wall_thickness/2,smoothAxisHeight + 0.5]){
+            //rotate(a=[0,270,0]){
+                rotate(a=[90,0,0]){
+                cylinder(h=(wall_thickness), r=smoothRodRadius);
+            }
+        }
+
                 //front anti-warp circle
-                translate([frame_width/2, wall_thickness*1.25, 0])
+                #translate([frame_width/2, wall_thickness*1.25, 0])
                     rotate([90, 0, 0])
                         cylinder(r=wall_thickness, h=wall_thickness*2);
 
