@@ -48,11 +48,11 @@ finished_base();
 //U-shaped hole for syringe plunger to go in
 module plunger_bed(){
     
-	translate([plungerClipThickness,centerY + mink_radius -plungerDiameter/2,syringeCenterHeight - plungerDiameter/2 + mink_radius]){
+	translate([mountXSize-(floatCorrection+plungerWellDepth),centerY + mink_radius -plungerDiameter/2,syringeCenterHeight - plungerDiameter/2 + mink_radius]){
 		plungerClip();
         } 	
-	
-        translate([-floatCorrection,centerY -plungerInnerDiameter/2,syringeCenterHeight - plungerInnerDiameter/2 + mink_radius]){
+        translate([mountXSize-(floatCorrection+plungerWellDepth),centerY-(plungerInnerDiameter - 2*mink_radius)/2,syringeCenterHeight - plungerInnerDiameter/2 + mink_radius]){	
+        //translate([mountXSize-(floatCorrection+plungerWellDepth),centerY -(plungerInnerDiameter/2),syringeCenterHeight - plungerInnerDiameter/2 + mink_radius]){
 		plungerRod();
 		}
 	}
@@ -60,9 +60,9 @@ module plunger_bed(){
 // syringe plunger clip holder
 module plungerClip(){
     
-     minkowski(){
+     #minkowski(){
 			cube(size=[plungerThickness,plungerDiameter - 2*mink_radius,mountZSize]);
-			rotate(a=[0,90,0]){cylinder(h=plungerThickness, r = mink_radius);
+			rotate(a=[0,90,0]){cylinder(h=plungerClipThickness, r = mink_radius-1);
 		}		
     }   
 }
@@ -70,7 +70,7 @@ module plungerClip(){
 // opening to hold the syringe plunger
 module plungerRod(){
     
-     minkowski(){
+     #minkowski(){
 			cube(size=[plungerClipThickness+floatCorrection2,plungerInnerDiameter - 2*mink_radius ,mountZSize]);
 			rotate(a=[0,90,0]){cylinder(h=plungerThickness, r = mink_radius);
 		}		
