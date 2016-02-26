@@ -60,7 +60,7 @@ module plunger_bed(){
 // syringe plunger clip holder
 module plungerClip(){
     
-     #minkowski(){
+     minkowski(){
 			cube(size=[plungerThickness,plungerDiameter - 2*mink_radius,mountZSize]);
 			rotate(a=[0,90,0]){cylinder(h=plungerClipThickness, r = mink_radius-1);
 		}		

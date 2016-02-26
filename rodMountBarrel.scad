@@ -33,14 +33,14 @@ difference(){
 
 	//hole for syringe barrel top to go in
     translate([0,0,-5.5]){
-        translate([barrelSlotThickness,centerY,syringeCenterHeight]){
+        #translate([mountXSize/2,centerY,syringeCenterHeight]){
             translate([0,-baseSizeY/2,-barrelSlotHeight/2]){
                 cube(size=[barrelSlotThickness, baseSizeY, barrelSlotHeight]);
             }
         }	
         translate([-floatCorrection,centerY,syringeCenterHeight]){
             rotate(a=[0,90,0]){
-                cylinder(h=mountXSize+floatCorrection2, r=plungerDiameter/2);
+                cylinder(h=mountXSize+floatCorrection2, r=barrelDiameter/2);
             }	
             translate([0,-plungerInnerDiameter/2,0]){
                 cube(size=[barrelSlotThickness+floatCorrection2,plungerInnerDiameter,mountZSize]);
